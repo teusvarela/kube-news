@@ -1,0 +1,16 @@
+postgre: 
+  tag: 14.3
+  credentials:
+    userPwd: Kube123
+    userName: kubenews
+    dbName: kubenews
+web:
+  image: fabricioveronez/kube-news
+  tag: 11
+  serviceType: ClusterIP
+  ingress:
+    enabled: False
+    className: nginx
+    hosts: ["161.35.253.202.nip.io"]
+
+
