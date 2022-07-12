@@ -9,6 +9,15 @@ build:
     docker:
       dockerfile: Dockerfile
 deploy:
-  kubectl:
-    manifests:
-    - k8s/deployment.yaml
+  helm:
+    releases:
+    - name: kube-news
+      chartPath: helm
+      artifactOverrides:
+        web:
+          image: fabricioveronez/kube-news
+      valuesFiles: 
+        - helm-values.yaml
+      imageStrategy:
+        helm: {}
+

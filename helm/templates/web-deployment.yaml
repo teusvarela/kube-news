@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: {{ .Values.web.image }}:{{ .Values.web.tag }}
+        image: {{ .Values.web.image.repository }}:{{ .Values.web.image.tag }}
         env:
         - name: DB_DATABASE
           value: {{ .Values.postgre.credentials.dbName }} 

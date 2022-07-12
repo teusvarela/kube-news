@@ -5,8 +5,9 @@ postgre:
     userName: kubenews
     dbName: kubenews
 web:
-  image: fabricioveronez/kube-news
-  tag: 11
+  image: 
+    repository: example/kube-news
+    tag: latest
   serviceType: ClusterIP
   ingress:
     enabled: False
