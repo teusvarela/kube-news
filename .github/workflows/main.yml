@@ -42,7 +42,7 @@ jobs:
    needs: [CI]
    steps:
       - uses: actions/checkout@v3
-      - name: Definindo o kubeconfig para login com terraform
+      - name: Definindo o kubeconfig para login no Kubernetes na Digital Ocean
         uses: Azure/k8s-set-context@v3.0
         with:
           method: kubeconfig
