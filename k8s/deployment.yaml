@@ -25,6 +25,10 @@ spec:
           - name: POSTGRES_DB
             value: "kubenews"
 ---
+
+# Deploy do serviço parecido com loadbalance que faz o balanceamento dos pods logicos 
+# Nesse caso está sendo usado TargetPort, mas se fosse na AWS, seria um LoadBalancer por exemplo
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -36,6 +40,9 @@ spec:
   - port: 5432 
     targetPort: 5432
 ---
+
+# Deploy da aplicação
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -49,14 +56,10 @@ spec:
     metadata:
       labels:
         app: kubenews  
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "8080"
-        prometheus.io/path: "/metrics"
     spec:
       containers:
       - name: kubenews
-        image: fabricioveronez/kube-news:11
+        image: teusvarela/kube-news:v1
         env:
         - name: DB_DATABASE
           value: "kubenews"
@@ -67,6 +70,11 @@ spec:
         - name: DB_HOST
           value: "postgre"      
 ---
+
+
+# Deploy do serviço parecido com loadbalance que faz o balanceamento dos pods logicos 
+# Nesse caso está sendo usado TargetPort e Nodeport, mas se fosse na AWS, seria um LoadBalancer por exemplo
+
 apiVersion: v1
 kind: Service
 metadata:
