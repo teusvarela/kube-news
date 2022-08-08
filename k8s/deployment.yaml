@@ -74,6 +74,7 @@ spec:
 
 # Deploy do serviço parecido com loadbalance que faz o balanceamento dos pods logicos 
 # Nesse caso está sendo usado TargetPort e Nodeport, mas se fosse na AWS, seria um LoadBalancer por exemplo
+#Após atualização, foi usado o deploy do kubernetes na nuvem, então o type ficou LoadBalancer.
 
 apiVersion: v1
 kind: Service
